@@ -8,6 +8,8 @@ interface Game {
 
     fun getAudio(): Audio
 
+    fun getInput(): Input
+
     fun getCurrentScreen(): Screen
 
     fun setScreen(screen: Screen)
