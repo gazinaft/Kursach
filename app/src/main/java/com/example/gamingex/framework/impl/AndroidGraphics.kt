@@ -36,8 +36,8 @@ class AndroidGraphics(val assets: AssetManager, val frameBuffer: Bitmap): Graphi
         } catch (e: IOException) {
             throw RuntimeException("Couldn`t load bitmap from asset $filename")
         } finally {
-            if (inp != null) try {
-                inp.close()
+            try {
+                inp?.close()
             } catch (e: IOException) {}
         }
         if (bitmap.config == Bitmap.Config.RGB_565) form = PixmapFormat.RGB565

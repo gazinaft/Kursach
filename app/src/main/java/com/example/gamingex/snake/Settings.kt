@@ -4,9 +4,15 @@ import com.example.gamingex.framework.FileIO
 import java.io.*
 import java.lang.NumberFormatException
 
+//stores the settings values for the whole game
 object Settings {
+    //sound status
     var soundEnabled = true
+
+    //default leaderboard
     val highscores = IntArray(5){100-it*15}
+
+    //loads the previous settings and leaderboards
 
     fun load(files: FileIO) {
         var inp: BufferedReader? = null
@@ -25,6 +31,7 @@ object Settings {
         }
     }
 
+    //saves the settings and leaderboards
     fun save(files: FileIO) {
         var out: BufferedWriter? = null
         try {
@@ -39,6 +46,7 @@ object Settings {
         }
     }
 
+    //updates the leaderboards
     fun addScore(score: Int) {
         for (i in 0..4) {
             if (highscores[i] < score) {
