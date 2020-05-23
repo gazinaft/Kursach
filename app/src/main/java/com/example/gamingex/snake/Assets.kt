@@ -3,6 +3,8 @@ package com.example.gamingex.snake
 import com.example.gamingex.framework.Pixmap
 import com.example.gamingex.framework.Sound
 
+//stores all the assets needed to represent a game
+
 object Assets {
     lateinit var backGround: Pixmap
     lateinit var logo: Pixmap

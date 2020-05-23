@@ -6,6 +6,7 @@ import com.example.gamingex.framework.Graphics.Companion.PixmapFormat
 import com.example.gamingex.framework.Pixmap
 import com.example.gamingex.framework.Screen
 
+//it appears at the start of the game session and uploads all the needed resources
 class LoadingScreen(game: Game): Screen(game) {
 
     override fun update(deltaTime: Float) {
