@@ -11,13 +11,13 @@ class HighscoreScreen(game: Game): Screen(game) {
 
     override fun update(deltaTime: Float) {
         val touchEvents = game.getInput().touchEvents
+        val g = game.getGraphics()
 
         //clear the buffer of keyEvents
         game.getInput().keyEvents
-
         for (event in touchEvents) {
             if (event.type == Input.Companion.TouchEvent.TOUCH_UP &&
-                    event.x < 64 && event.y > 416) {
+                    event.x > g.getWidth()-64 && event.y > g.getHeight()-64) {
                 Assets.click.play(1f)
                 game.setScreen(MainMenuScreen(game))
             }
@@ -36,7 +36,7 @@ class HighscoreScreen(game: Game): Screen(game) {
             y += 50
         }
 
-        g.drawPixmap(Assets.buttons, 0, 416)
+        g.drawPixmap(Assets.buttons, g.getWidth()-64, g.getHeight()-64,64, 64, 64, 64)
 
     }
 

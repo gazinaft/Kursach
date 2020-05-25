@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".snake.SnakeGame"
-            android:screenOrientation="landscape"
+            android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

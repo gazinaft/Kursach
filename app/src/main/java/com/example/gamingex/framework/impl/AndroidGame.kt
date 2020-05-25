@@ -11,8 +11,9 @@ import com.example.gamingex.framework.*
 abstract class AndroidGame: Game, Activity() {
 
     companion object {
-        const val scrWidth = 380
-        const val scrHeight = 420
+        //intended resolution
+        const val scrWidth = 320
+        const val scrHeight = 380
     }
 
     lateinit var renderView: FastRenderView
