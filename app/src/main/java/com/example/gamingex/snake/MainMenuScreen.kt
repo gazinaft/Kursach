@@ -55,9 +55,9 @@ class MainMenuScreen(game: Game): Screen(game) {
 
         //draws a sound icon depending on a volume settings
         if (Settings.soundEnabled)
-            g.drawPixmap(Assets.buttons, 0,416, 0, 0, 64, 64)
+            g.drawPixmap(Assets.buttons, 0,g.getHeight()-64, 0, 0, 64, 64)
         else
-            g.drawPixmap(Assets.buttons, 0, 416, 64, 0, 64, 64)
+            g.drawPixmap(Assets.buttons, 0, g.getHeight()-64, 64, 0, 64, 64)
     }
 
     private fun inBounds(event: Input.Companion.TouchEvent, x: Int, y: Int, width: Int, height: Int): Boolean =
