@@ -12,11 +12,11 @@ class World {
         const val seed = 15
     }
     var score = 0
-    val random = Random(seed)
-    var tick = DELTA_TIME
-    var tickTime = 0f
+    private val random = Random(seed)
+    private var tick = DELTA_TIME
+    private var tickTime = 0f
     val snake = Snake()
-    val fields = List(WORLD_WIDTH) {BooleanArray(WORLD_HEIGHT)}
+    private val fields = List(WORLD_WIDTH) {BooleanArray(WORLD_HEIGHT)}
     lateinit var stain: Stain
     var gameOver = false
 
