@@ -24,11 +24,10 @@ object Settings {
             }
         } catch (e: IOException) {}
         catch (e: NumberFormatException) {}
-        finally {
-            try {
-                inp?.close()
-            } catch (e: IOException) {}
-        }
+        try {
+            inp?.close()
+        } catch (e: IOException) {}
+
     }
 
     //saves the settings and leaderboards
@@ -38,12 +37,10 @@ object Settings {
             out = BufferedWriter(OutputStreamWriter(files.writeFile(".snake")))
             out.write(soundEnabled.toString())
             for (i in 0..4) out.write(highscores[i].toString())
-        } catch (e: IOException){
-        } finally {
-            try {
-                out?.close()
-            } catch (e: IOException){}
-        }
+        } catch (e: IOException){}
+        try {
+            out?.close()
+        } catch (e: IOException){}
     }
 
     //updates the leaderboards
@@ -57,6 +54,5 @@ object Settings {
             }
         }
     }
-
 
 }
