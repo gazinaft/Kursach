@@ -14,7 +14,7 @@ class MainMenuScreen(game: Game): Screen(game) {
 
         for (i in touchEvents.indices) {
             val event = touchEvents[i]
-            if(event.type == Input.Companion.TouchEvent.TOUCH_UP) {
+            if (event.type == Input.Companion.TouchEvent.TOUCH_UP) {
                 when {
                     //checks whether a user clicked on "Volume" button
                     inBounds(event, 0, g.getHeight()-64, 64, 64) -> {
