@@ -2,6 +2,7 @@ package com.example.gamingex.framework.impl
 
 import android.content.res.AssetManager
 import android.graphics.*
+import androidx.annotation.Px
 import com.example.gamingex.framework.Graphics
 import com.example.gamingex.framework.Graphics.Companion.PixmapFormat
 import com.example.gamingex.framework.Pixmap
@@ -35,13 +36,14 @@ class AndroidGraphics(val assets: AssetManager, val frameBuffer: Bitmap): Graphi
         } catch (e: IOException) {
             throw RuntimeException("Couldn`t load bitmap from asset $filename")
         } finally {
-            if (inp != null) try {
-                inp.close()
+            try {
+                inp?.close()
             } catch (e: IOException) {}
         }
         if (bitmap.config == Bitmap.Config.RGB_565) form = PixmapFormat.RGB565
         return AndroidPixmap(bitmap, form)
     }
+
 
     //clears the framebuffer
     override fun clear(color: Int) {

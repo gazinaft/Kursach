@@ -11,9 +11,11 @@ import com.example.gamingex.framework.*
 abstract class AndroidGame: Game, Activity() {
 
     companion object {
-        const val scrWidth = 720
-        const val scrHeight = 1280
+        //intended resolution
+        const val scrWidth = 320
+        const val scrHeight = 380
     }
+
     lateinit var renderView: FastRenderView
     lateinit var graphics: AndroidGraphics
     lateinit var audio: AndroidAudio
@@ -77,4 +79,6 @@ abstract class AndroidGame: Game, Activity() {
     override fun getGraphics(): Graphics = graphics
 
     override fun getCurrentScreen(): Screen = screen
+
+    override fun getInput(): Input = input
 }
