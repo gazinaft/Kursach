@@ -35,15 +35,13 @@ class AndroidGraphics(val assets: AssetManager, val frameBuffer: Bitmap): Graphi
             if (bitmap == null) throw RuntimeException("Couldn`t load bitmap from asset $filename")
         } catch (e: IOException) {
             throw RuntimeException("Couldn`t load bitmap from asset $filename")
-        } finally {
-            try {
-                inp?.close()
-            } catch (e: IOException) {}
         }
+        try {
+            inp?.close()
+        } catch (e: IOException) {}
         if (bitmap.config == Bitmap.Config.RGB_565) form = PixmapFormat.RGB565
         return AndroidPixmap(bitmap, form)
     }
-
 
     //clears the framebuffer
     override fun clear(color: Int) {
