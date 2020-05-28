@@ -13,8 +13,8 @@ abstract class HelpScreenAbstract(game: Game): Screen(game) {
         game.getInput().keyEvents
         for (event in touchEvents) {
             if (event.type == Input.Companion.TouchEvent.TOUCH_UP) {
-                if (event.x > 256 && event.y > 416) {
-                    game.setScreen(helpScreenFactory(number, game))
+                if (event.x > 256 && event.y > game.getGraphics().getHeight()-64) {
+                    game.setScreen(screenFactory(number, game))
                     if (Settings.soundEnabled) Assets.click.play(1f)
                 }
             }
@@ -36,18 +36,18 @@ abstract class HelpScreenAbstract(game: Game): Screen(game) {
 
         g.drawPixmap(Assets.backGround, 0, 0)
         g.drawPixmap(asset, 64, 100)
-        g.drawPixmap(Assets.buttons, 256, 416, 0, 64, 64, 64)
+        g.drawPixmap(Assets.buttons, 256, game.getGraphics().getHeight()-64, 0, 64, 64, 64)
     }
 
     override fun present(deltaTime: Float) {
         presentAbstract(order)
     }
 
-    fun helpScreenFactory(int: Int, game: Game): Screen {
+    fun screenFactory(int: Int, game: Game): Screen {
         return when (int) {
-            1 -> HelpScreen(game)
-            2 -> HelpScreen2(game)
-            3 -> HelpScreen3(game)
+            1 -> HelpScreen2(game)
+            2 -> HelpScreen3(game)
+            3 -> MainMenuScreen(game)
             else -> throw IllegalStateException("there are only 3 screens")
         }
     }

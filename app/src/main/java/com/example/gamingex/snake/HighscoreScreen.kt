@@ -18,12 +18,11 @@ class HighscoreScreen(game: Game): Screen(game) {
         for (event in touchEvents) {
             if (event.type == Input.Companion.TouchEvent.TOUCH_UP &&
                     event.x > g.getWidth()-64 && event.y > g.getHeight()-64) {
-                Assets.click.play(1f)
+                if (Settings.soundEnabled) Assets.click.play(1f)
                 game.setScreen(MainMenuScreen(game))
             }
         }
     }
-
 
     override fun present(deltaTime: Float) {
         val g = game.getGraphics()

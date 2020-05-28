@@ -16,7 +16,7 @@ class LoadingScreen(game: Game): Screen(game) {
         with(Assets) {
             backGround = g.newPixmap("background.png", PixmapFormat.RGB565)
             logo = load("logo.png")
-            mainMenu = load("mainmenu.png")
+            mainMenu = load("menu.png")
             buttons = load("buttons.png")
             help1 = load("help1.png")
             help2 = load("help2.png")
@@ -38,7 +38,7 @@ class LoadingScreen(game: Game): Screen(game) {
             eat = audio.newSound("eat.ogg")
             bitten = audio.newSound("bitten.ogg")
         }
-        Settings.load(game.getFileIO())
+        //Settings.load(game.getFileIO())
         game.setScreen(MainMenuScreen(game))
     }
 
