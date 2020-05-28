@@ -5,4 +5,3 @@ interface Audio {
 
     fun newSound(fileName: String): Sound
 }
-
