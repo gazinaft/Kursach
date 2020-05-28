@@ -6,8 +6,7 @@ import com.example.gamingex.framework.Screen
 
 abstract class HelpScreenAbstract(game: Game): Screen(game) {
 
-        abstract val order: Int
-
+    abstract val order: Int
 
     fun update(deltaTime: Float, number: Int) {
         val touchEvents = game.getInput().touchEvents
@@ -43,7 +42,6 @@ abstract class HelpScreenAbstract(game: Game): Screen(game) {
     override fun present(deltaTime: Float) {
         presentAbstract(order)
     }
-
 
     fun helpScreenFactory(int: Int, game: Game): Screen {
         return when (int) {

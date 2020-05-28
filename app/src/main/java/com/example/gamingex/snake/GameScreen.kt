@@ -168,7 +168,7 @@ class GameScreen(game: Game): Screen(game) {
         g.drawPixmap(Assets.buttons, 128, 200, 0, 128, 64, 64);
     }
 
-    fun drawNumbers(g: Graphics, line: String, x: Int, y: Int) {
+    private fun drawNumbers(g: Graphics, line: String, x: Int, y: Int) {
         var xI = x
         for (i in line.indices) {
             val char = line[i]
@@ -191,9 +191,17 @@ class GameScreen(game: Game): Screen(game) {
         }
     }
 
-    override fun dispose() = Unit
+    override fun pause() {
+        if (state == GameState.Running) state = GameState.Paused
 
-    override fun pause() = Unit
+        if(state == GameState.GameOver) {
+            Settings.addScore(oldScore)
+            Settings.save(game.getFileIO())
+        }
+    }
 
     override fun resume() = Unit
+
+    override fun dispose() = Unit
+
 }
