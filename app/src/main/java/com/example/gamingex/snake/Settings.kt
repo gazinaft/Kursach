@@ -10,7 +10,7 @@ object Settings {
     var soundEnabled = true
 
     //default leaderboard
-    val highscores = IntArray(5){100-it*15}
+    val highscores = IntArray(5){100-it*10}
 
     //loads the previous settings and leaderboards
 
@@ -47,7 +47,7 @@ object Settings {
     fun addScore(score: Int) {
         for (i in 0..4) {
             if (highscores[i] < score) {
-                for (j in 4 downTo i)
+                for (j in 4 downTo i+1)
                     highscores[j] = highscores[j - 1]
                 highscores[i] = score
                 break

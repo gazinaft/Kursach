@@ -57,6 +57,7 @@ class GameScreen(game: Game): Screen(game) {
             }
         }
         world.update(deltaTime)
+
         if (world.gameOver) {
             if (Settings.soundEnabled) Assets.bitten.play(1f)
             state = GameState.GameOver
@@ -145,7 +146,7 @@ class GameScreen(game: Game): Screen(game) {
         val headX = head.x * 32 + 16
         val headY = head.y * 32 + 16
 
-        g.drawPixmap(headPixmap, stX - headPixmap.getWidth() / 2, stY - headPixmap.getHeight() / 2)
+        g.drawPixmap(headPixmap, headX - headPixmap.getWidth() / 2, headY - headPixmap.getHeight() / 2)
     }
 
     private fun drawReady(g: Graphics) {
