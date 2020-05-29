@@ -50,8 +50,8 @@ class Snake {
         when {
             head.x < 0 -> head.x = 9
             head.x > 9 -> head.x = 0
-            head.y < 0 -> head.y = 12
-            head.y > 12 -> head.y = 0
+            head.y < 0 -> head.y = 9
+            head.y > 9 -> head.y = 0
         }
     }
 
