@@ -11,14 +11,19 @@ class World {
         const val SCORE_INCREMENT = 10
         const val seed = 15
     }
+
     var score = 0
     private val random = Random(seed)
     private var tick = DELTA_TIME
     private var tickTime = 0f
     val snake = Snake()
-    private val fields = List(WORLD_WIDTH) {BooleanArray(WORLD_HEIGHT)}
+    private val fields = Array(WORLD_WIDTH) {BooleanArray(WORLD_HEIGHT)}
     lateinit var stain: Stain
     var gameOver = false
+
+    init {
+        placeStain()
+    }
 
     private fun placeStain() {
         for (i in 0 until WORLD_WIDTH) {
