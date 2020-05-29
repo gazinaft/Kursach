@@ -9,11 +9,10 @@ class World {
         const val DELTA_TIME = 0.5f
         const val DELTA_DECREMENT = 0.05f
         const val SCORE_INCREMENT = 10
-        const val seed = 15
     }
 
     var score = 0
-    private val random = Random(seed)
+
     private var tick = DELTA_TIME
     private var tickTime = 0f
     val snake = Snake()
@@ -35,8 +34,8 @@ class World {
             fields[part.x][part.y] = true
         }
 
-        var stainX = random.nextInt(WORLD_WIDTH)
-        var stainY = random.nextInt(WORLD_HEIGHT)
+        var stainX = Random.nextInt(WORLD_WIDTH)
+        var stainY = Random.nextInt(WORLD_HEIGHT)
         while (true) {
             if (!fields[stainX][stainY]) break
 
@@ -50,7 +49,7 @@ class World {
             }
 
         }
-        stain = Stain(stainX, stainY, random.nextInt(3))
+        stain = Stain(stainX, stainY, Random.nextInt(3))
     }
 
     fun update(deltaTime: Float) {
