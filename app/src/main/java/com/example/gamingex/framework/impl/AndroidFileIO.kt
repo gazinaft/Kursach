@@ -6,7 +6,7 @@ import java.io.*
 
 class AndroidFileIO(context: Context): FileIO {
     private val assets = context.assets
-    private val externalStorage = context.getExternalFilesDir(null)?.absolutePath + File.separator
+    private val externalStorage = context.filesDir?.absolutePath + File.separator
 
     @Throws(IOException::class)
     override fun getAsset(fileName: String): InputStream = this.assets.open(fileName)

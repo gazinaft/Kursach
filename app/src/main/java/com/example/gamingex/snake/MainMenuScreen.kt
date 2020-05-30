@@ -44,7 +44,6 @@ class MainMenuScreen(game: Game): Screen(game) {
         }
     }
 
-
     override fun present(deltaTime: Float) {
         val g = game.getGraphics()
         g.drawPixmap(Assets.backGround, 0, 0)
@@ -54,10 +53,9 @@ class MainMenuScreen(game: Game): Screen(game) {
         g.drawPixmap(Assets.mainMenu, 64, 220)
 
         //draws a sound icon depending on a volume settings
-        if (Settings.soundEnabled)
-            g.drawPixmap(Assets.buttons, 0,g.getHeight()-64, 0, 0, 64, 64)
-        else
-            g.drawPixmap(Assets.buttons, 0, g.getHeight()-64, 64, 0, 64, 64)
+        val yDraw = g.getHeight()-64
+        val srcX = if (Settings.soundEnabled) 0 else 64
+        g.drawPixmap(Assets.buttons, 0, yDraw, srcX, 0, 64, 64)
     }
 
     private fun inBounds(event: Input.Companion.TouchEvent, x: Int, y: Int, width: Int, height: Int): Boolean =
