@@ -13,7 +13,6 @@ object Settings {
     val highscores = IntArray(5){100-it*10}
 
     //loads the previous settings and leaderboards
-
     fun load(files: FileIO) {
         var inp: BufferedReader? = null
         try {

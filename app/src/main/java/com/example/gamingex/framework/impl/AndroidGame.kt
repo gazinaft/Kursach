@@ -37,6 +37,7 @@ abstract class AndroidGame: Game, Activity() {
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
 
+        //calculates the resolution of a current device to scale the image on the screes
         val scaleX: Float = frameBufferWidth.toFloat() / displayMetrics.widthPixels
         val scaleY: Float = frameBufferHeight.toFloat() / displayMetrics.heightPixels
 

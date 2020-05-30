@@ -1,6 +1,7 @@
 package com.example.gamingex.framework
 
 interface Music {
+
     fun play()
 
     fun pause()

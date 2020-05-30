@@ -4,10 +4,12 @@ import android.content.Context
 import android.view.View
 import com.example.gamingex.framework.Input
 
+//the class that unites all the input handlers in one class
+//used to handle accelerometer, keyboard and touch events
 class AndroidInput(context: Context, view: View, scaleX: Float, scaleY: Float): Input {
     private val accelerometerHandler = AccelerometerHandler(context)
-    val touchHandler = MultiTouchHandler(view, scaleX, scaleY)
-    val keyboardHandler = KeyboardHandler(view)
+    private val touchHandler = MultiTouchHandler(view, scaleX, scaleY)
+    private val keyboardHandler = KeyboardHandler(view)
 
     override fun isKeyPressed(keyCode: Int): Boolean = keyboardHandler.isKeyPressed(keyCode)
 
