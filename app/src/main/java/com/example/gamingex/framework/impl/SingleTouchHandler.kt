@@ -52,7 +52,6 @@ class SingleTouchHandler(view: View, val scaleX: Float, val scaleY: Float): Touc
         }
     }
 
-
     override fun getX(pointer: Int): Int {
         synchronized(this) {
             return touchX
@@ -75,4 +74,5 @@ class SingleTouchHandler(view: View, val scaleX: Float, val scaleY: Float): Touc
             return touchEvents
         }
     }
+
 }

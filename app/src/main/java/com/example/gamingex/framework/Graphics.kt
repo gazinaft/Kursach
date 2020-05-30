@@ -2,12 +2,14 @@ package com.example.gamingex.framework
 
 //interface responsible for all graphical manipulations
 interface Graphics {
+
     companion object {
         //used to describe color format of Pixmap
         enum class PixmapFormat {
             ARGB8888, ARGB4444, RGB565
         }
     }
+
     //returns a new asset(drawing) resource
     //which is used to draw complicated drawings
     fun newPixmap(filename: String, format: PixmapFormat): Pixmap

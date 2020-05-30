@@ -30,6 +30,7 @@ class MultiTouchHandler(view: View, val scaleX: Float, val scaleY: Float): Touch
             val pointerIndex = (event.action and MotionEvent.ACTION_POINTER_INDEX_MASK) shr MotionEvent.ACTION_POINTER_INDEX_SHIFT
             val pointerCount = event.pointerCount
             lateinit var touchEvent: TouchEvent
+
             for (i in 0 until MAX_TOUCH) {
                 if (i >= pointerCount) {
                     isTouched[i] = false
@@ -125,4 +126,5 @@ class MultiTouchHandler(view: View, val scaleX: Float, val scaleY: Float): Touch
         }
         return -1
     }
+
 }

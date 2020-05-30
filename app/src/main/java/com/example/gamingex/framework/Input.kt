@@ -2,7 +2,9 @@ package com.example.gamingex.framework
 
 
 interface Input {
+
     companion object {
+
         class KeyEvent {
             companion object {
                 const val KEY_UP = 1
@@ -12,6 +14,7 @@ interface Input {
              var keyCode: Int = 0
              var keyChar: Char = '0'
         }
+
         class TouchEvent {
             companion object {
                 const val TOUCH_DOWN = 0
@@ -23,6 +26,7 @@ interface Input {
             var y: Int = 0
             var pointer: Int = 0
         }
+
     }
 
     fun isKeyPressed(keyCode: Int): Boolean

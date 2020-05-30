@@ -47,7 +47,6 @@ class World {
                     stainY = 0
                 }
             }
-
         }
         stain = Stain(stainX, stainY, Random.nextInt(3))
     }
@@ -82,4 +81,5 @@ class World {
             }
         }
     }
+
 }

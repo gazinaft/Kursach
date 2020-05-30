@@ -13,10 +13,10 @@ class KeyboardHandler(view: View): View.OnKeyListener {
     companion object {
         const val MAX_SIZE = 100
     }
-    val pressedKeys = BooleanArray(128)
-    val factory = KeyEventFactory()
-    val keyEventPool = Pool<Input.Companion.KeyEvent>(factory, MAX_SIZE)
-    val keyEventsBuffer = ArrayList<Input.Companion.KeyEvent>()
+    private val pressedKeys = BooleanArray(128)
+    private val factory = KeyEventFactory()
+    private val keyEventPool = Pool<Input.Companion.KeyEvent>(factory, MAX_SIZE)
+    private val keyEventsBuffer = ArrayList<Input.Companion.KeyEvent>()
 
     val keyEvents = ArrayList<Input.Companion.KeyEvent>()
         get() {
@@ -38,21 +38,24 @@ class KeyboardHandler(view: View): View.OnKeyListener {
         }
     }
 
-
     override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
         if (event == null) return false
         synchronized(this) {
+
             val keyEvent = keyEventPool.newObject()
             keyEvent.keyCode = keyCode
             keyEvent.keyChar = event.unicodeChar.toChar()
+
             if (event.action == KeyEvent.ACTION_DOWN) {
                 keyEvent.type = Input.Companion.KeyEvent.KEY_DOWN
                 if (keyCode in 0..127) pressedKeys[keyCode] = true
             }
+
             if (event.action == KeyEvent.ACTION_UP) {
                 keyEvent.type = Input.Companion.KeyEvent.KEY_UP
                 if (keyCode in 0..127) pressedKeys[keyCode] = false
             }
+
             keyEventsBuffer.add(keyEvent)
         }
         return false

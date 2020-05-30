@@ -13,12 +13,16 @@ class FastRenderView(private val game: AndroidGame, val frameBuffer: Bitmap): Su
     @Volatile var running: Boolean = false
     private var hold: SurfaceHolder = holder
 
+    //starts a new Thread to display graphics
     fun resume() {
         running = true
         renderThread = Thread(this)
         renderThread?.start()
     }
 
+    //this view implements Runnable and extends SurfaceView
+    //made to draw graphics in a separate Thread
+    //because main Thread is responsible for handling input and other calculations
     override fun run() {
         val dstRect = Rect()
         var startTime: Long = System.nanoTime()
@@ -39,7 +43,8 @@ class FastRenderView(private val game: AndroidGame, val frameBuffer: Bitmap): Su
         }
     }
 
-
+    //stops the renderThread
+    //because there`s no need to update the frameBuffer while paused
     fun pause() {
         running = false
         while (true) {
@@ -49,6 +54,5 @@ class FastRenderView(private val game: AndroidGame, val frameBuffer: Bitmap): Su
             } catch (e: InterruptedException) {}
         }
     }
-
 
 }
