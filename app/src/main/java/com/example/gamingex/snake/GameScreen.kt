@@ -49,9 +49,9 @@ class GameScreen(game: Game): Screen(game) {
                 if (event.x < 64 && event.y > game.getGraphics().getHeight() - 64) {
                     world.snake.turnLeft()
                 }
-                if (event.x > game.getGraphics().getWidth() - 64 && event.y > game.getGraphics()
-                        .getHeight() - 64
-                ) {
+                val wid = game.getGraphics().getWidth()
+                val hei = game.getGraphics().getHeight()
+                if (event.x > wid - 64 && event.y > hei - 64) {
                     world.snake.turnRight()
                 }
             }
@@ -88,12 +88,12 @@ class GameScreen(game: Game): Screen(game) {
 
     private fun updateOver(touchEvents: Collection<Input.Companion.TouchEvent>) {
         for (event in touchEvents) {
-            if (event.type == Input.Companion.TouchEvent.TOUCH_UP &&
-                    event.x in 128..192 &&
-                    event.y in 200..264) {
-                if (Settings.soundEnabled) Assets.click.play(1f)
-                game.setScreen(MainMenuScreen(game))
-                return
+            if (event.type == Input.Companion.TouchEvent.TOUCH_UP) {
+                if (event.x in 128..192 && event.y in 200..264) {
+                    if (Settings.soundEnabled) Assets.click.play(1f)
+                    game.setScreen(MainMenuScreen(game))
+                    return
+                }
             }
         }
     }
@@ -104,7 +104,7 @@ class GameScreen(game: Game): Screen(game) {
         g.drawPixmap(Assets.backGround, 0, 0)
 
         drawWorld(world)
-        g.drawLine(0, g.getHeight() - 60, g.getWidth(), g.getHeight() - 64, Color.BLACK)
+        g.drawLine(0, g.getHeight() - 64, g.getWidth(), g.getHeight() - 64, Color.BLACK)
 
         when (state) {
             GameState.Running -> drawRunning(g)
@@ -112,7 +112,8 @@ class GameScreen(game: Game): Screen(game) {
             GameState.Paused -> drawPaused(g)
             GameState.GameOver -> drawOver(g)
         }
-        drawNumbers(g, score, g.getWidth() / 2 - score.length * 10, g.getHeight() - 42)
+        val numX = g.getWidth() / 2 - score.length * 10
+        drawNumbers(g, score, numX, g.getHeight() - 42)
     }
 
     private fun drawWorld(world: World) {
@@ -143,10 +144,13 @@ class GameScreen(game: Game): Screen(game) {
             RIGHT -> Assets.headRight
             else -> throw IllegalStateException("Head can be in only 4 directions")
         }
+
         val headX = head.x * 32 + 16
         val headY = head.y * 32 + 16
+        val headPosX = headX - headPixmap.getWidth() / 2
+        val headPosY = headY - headPixmap.getHeight() / 2
 
-        g.drawPixmap(headPixmap, headX - headPixmap.getWidth() / 2, headY - headPixmap.getHeight() / 2)
+        g.drawPixmap(headPixmap, headPosX, headPosY)
     }
 
     private fun drawReady(g: Graphics) {
