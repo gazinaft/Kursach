@@ -1,7 +1,6 @@
 package com.example.gamingex.snake
 
 import com.example.gamingex.framework.Game
-import com.example.gamingex.framework.Graphics
 import com.example.gamingex.framework.Graphics.Companion.PixmapFormat
 import com.example.gamingex.framework.Pixmap
 import com.example.gamingex.framework.Screen
@@ -16,7 +15,7 @@ class LoadingScreen(game: Game): Screen(game) {
         with(Assets) {
             backGround = g.newPixmap("background.png", PixmapFormat.RGB565)
             logo = load("logo.png")
-            mainMenu = load("menu.png")
+            mainMenu = load("mainMenu.png")
             buttons = load("buttons.png")
             help1 = load("help1.png")
             help2 = load("help2.png")
@@ -24,11 +23,11 @@ class LoadingScreen(game: Game): Screen(game) {
             numbers = load("numbers.png")
             ready = load("ready.png")
             pause = load("pause.png")
-            gameOver = load("gameover.png")
-            headUp = load("headup.png")
-            headDown = load("headdown.png")
-            headLeft = load("headleft.png")
-            headRight = load("headright.png")
+            gameOver = load("gameOver.png")
+            headUp = load("headUp.png")
+            headDown = load("headDown.png")
+            headLeft = load("headLeft.png")
+            headRight = load("headRight.png")
             tail = load("tail.png")
             stain1 = load("stain1.png")
             stain2 = load("stain2.png")
