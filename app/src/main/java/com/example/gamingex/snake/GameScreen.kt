@@ -104,7 +104,7 @@ class GameScreen(game: Game): Screen(game) {
         g.drawPixmap(Assets.backGround, 0, 0)
 
         drawWorld(world)
-        g.drawLine(0, g.getHeight() - 64, g.getWidth(), g.getHeight() - 64, Color.BLACK)
+        g.drawLine(0, g.getHeight() - 60, g.getWidth(), g.getHeight() - 60, Color.BLACK)
 
         when (state) {
             GameState.Running -> drawRunning(g)
