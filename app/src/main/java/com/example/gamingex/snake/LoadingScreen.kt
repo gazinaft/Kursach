@@ -32,6 +32,8 @@ class LoadingScreen(game: Game): Screen(game) {
             stain1 = load("stain1.png")
             stain2 = load("stain2.png")
             stain3 = load("stain3.png")
+            turn = load("turn.png")
+            down = load("down.png")
 
             click = audio.newSound("click.ogg")
             eat = audio.newSound("eat.ogg")
