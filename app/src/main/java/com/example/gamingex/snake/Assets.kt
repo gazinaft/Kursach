@@ -25,6 +25,8 @@ object Assets {
     lateinit var stain1: Pixmap
     lateinit var stain2: Pixmap
     lateinit var stain3: Pixmap
+    lateinit var turn: Pixmap
+    lateinit var down: Pixmap
 
     lateinit var click: Sound
     lateinit var eat: Sound
