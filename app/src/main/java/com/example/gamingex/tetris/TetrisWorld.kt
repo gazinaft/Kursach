@@ -1,5 +1,7 @@
 package com.example.gamingex.tetris
 
+import androidx.core.util.Pools
+import com.example.gamingex.framework.impl.Pool
 import kotlin.random.Random
 
 class TetrisWorld {
@@ -10,13 +12,15 @@ class TetrisWorld {
         const val TICK_TIME = 0.5f
         const val TICK_DECREMENT = 0.05f
         const val SCORE_INCREMENT = 10
+        const val UPPER_LIM = 1
     }
 
     val field = Array(WORLD_WIDTH) {BooleanArray(WORLD_HEIGHT)}
     var gameOver = false
     var tick = TICK_TIME
-    lateinit var activeBlock: Block
+    var activeBlock: Block? = null
     val busy = ArrayList<Brick>()
+    val blockPool: Pool<Block> = Pool(BlockPoolFactory(), 4)
 
     init {
         spawnBlock()
@@ -27,8 +31,9 @@ class TetrisWorld {
     }
 
     //checks if the game is over
-    fun over(): Boolean {
-
+    fun isOver(): Boolean {
+        gameOver = true
+        return field.any { it[UPPER_LIM] }
     }
 
     //spawns a new block on top of the world
@@ -37,10 +42,13 @@ class TetrisWorld {
             for (j in 0 until WORLD_HEIGHT) {
                 field[i][j] = false
             }
-            activeBlock = Block(WORLD_WIDTH/2, 0, Random.nextInt(7))
-            busy.addAll(activeBlock.structure)
         }
+        busy.addAll(activeBlock?.structure ?: emptyList())
+        for (brick in busy) {
+            field[brick.x][brick.y] = true
+        }
+        activeBlock?.run { blockPool.free(activeBlock!!) }
+        activeBlock = blockPool.newObject()
     }
-
 
 }
