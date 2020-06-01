@@ -6,6 +6,6 @@ import kotlin.random.Random
 
 class BlockPoolFactory: PoolFactory<Block> {
     override fun createObject(): Block {
-        return Block(10, 0, Random.nextInt(6))
+        return Block(TetrisWorld.WORLD_WIDTH/2, 0, Random.nextInt(7))
     }
 }
