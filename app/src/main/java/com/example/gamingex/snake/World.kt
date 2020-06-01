@@ -12,7 +12,6 @@ class World {
     }
 
     var score = 0
-
     private var tick = DELTA_TIME
     private var tickTime = 0f
     val snake = Snake()

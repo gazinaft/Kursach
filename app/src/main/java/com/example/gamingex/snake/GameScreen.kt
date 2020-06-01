@@ -181,8 +181,8 @@ class GameScreen(game: Game): Screen(game) {
                 xI += 20
                 continue
             }
-            var srcWidth = 0
-            var srcX = 0
+            var srcWidth: Int
+            var srcX: Int
 
             if (char == '.') {
                 srcWidth = 10
