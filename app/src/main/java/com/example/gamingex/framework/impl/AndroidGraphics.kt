@@ -32,7 +32,7 @@ class AndroidGraphics(val assets: AssetManager, val frameBuffer: Bitmap): Graphi
         try {
             inp = assets.open(filename)
             bitmap = BitmapFactory.decodeStream(inp)
-            if (bitmap == null) throw RuntimeException("Couldn`t load bitmap from asset $filename")
+            if (bitmap == null) throw RuntimeException("Couldn`t load bitmap from asset $filename, it`s null")
         } catch (e: IOException) {
             throw RuntimeException("Couldn`t load bitmap from asset $filename")
         }
