@@ -3,6 +3,7 @@ package com.example.gamingex.tetris
 class Block(var x: Int, var y: Int, val shape: Int ) {
 
     companion object {
+        //The shapes of blocks
         //00
         //00
         const val SQUARE = 0
@@ -26,7 +27,9 @@ class Block(var x: Int, var y: Int, val shape: Int ) {
         // 0
         //000
         const val LADDER = 6
+        
     }
+
     //structure of a particular block
     // which is responsible for the order and place of the block in a game
     //depends on a shape of each block
@@ -50,16 +53,62 @@ class Block(var x: Int, var y: Int, val shape: Int ) {
             throw IllegalStateException("There are only 7 shapes of blocks in Tetris")
     }.apply { add(Brick(x, y)) }
 
-    fun rotated(): Collection<Brick> = when (shape) {
-        SQUARE ->
-            structure.toMutableList()
-
-        else ->
-            throw IllegalStateException("There are only 7 shapes of blocks in Tetris")
+    fun copyStructure(list: Collection<Brick> = structure): Collection<Brick> {
+        val res = mutableListOf<Brick>()
+        for ((index, brick) in list.withIndex()) {
+            res[index] = Brick(brick.x, brick.y)
+        }
+        return res
     }
 
-    fun moveDown() {
-        structure.forEach { it.y += 1 }
+    fun asRight(list: ArrayList<Brick> = this.structure): ArrayList<Brick> {
+        val root = list.last()
+        val res = copyStructure() as ArrayList<Brick>
+        for (i in 0..res.size - 2) {
+            val dx = root.x - res[i].x
+            val dy = root.y - res[i].y
+            res[i].x = root.x + dy
+            res[i].y = root.y + dx
+        }
+        return rebaseRoot(res)
+    }
+
+    fun asLeft(list: ArrayList<Brick> = this.structure): ArrayList<Brick> {
+        val root = list.last()
+        val res = copyStructure() as ArrayList<Brick>
+        for (i in 0..res.size - 2) {
+            val dx = root.x - res[i].x
+            val dy = root.y - res[i].y
+            res[i].x = root.x - dy
+            res[i].y = root.y - dx
+        }
+        return rebaseRoot(res)
+    }
+
+    fun rebaseRoot(list: ArrayList<Brick>): ArrayList<Brick> {
+        val root = list.last()
+        val res = list.sortedBy { it.x }.sortedBy { it.y } as ArrayList<Brick>
+        val dy = root.y - res.last().y
+        moveDown(dy, res)
+        return res
+    }
+
+    fun turnRight() {
+        structure.clear()
+        structure.addAll(asRight())
+    }
+
+    fun turnLeft() {
+        structure.clear()
+        structure.addAll(asLeft())
+    }
+
+    fun moveDown(step: Int = 1, list: ArrayList<Brick> = structure) {
+        list.forEach { it.y += step }
+    }
+
+    fun moveUp(step: Int, list: ArrayList<Brick> = structure) {
+        list.forEach { it.y -= step }
     }
 
 }
