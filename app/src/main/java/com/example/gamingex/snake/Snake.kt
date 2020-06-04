@@ -18,7 +18,7 @@ class Snake {
     }
 
     fun turnLeft() {
-        --direction
+        ++direction
         if (direction > RIGHT) direction = UP
 
     }
