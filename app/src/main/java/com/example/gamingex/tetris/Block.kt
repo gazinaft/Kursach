@@ -27,7 +27,7 @@ class Block(var x: Int, var y: Int, val shape: Int ) {
         // 0
         //000
         const val LADDER = 6
-        
+
     }
 
     //structure of a particular block
@@ -36,24 +36,24 @@ class Block(var x: Int, var y: Int, val shape: Int ) {
     //the x and y are the coordinates of lower right brick
     val structure = when(shape){
         SQUARE ->
-            arrayListOf<Brick>(Brick(x - 1, y - 1), Brick(x, y - 1), Brick(x - 1, y))
+            arrayListOf(Brick(x - 1, y - 1), Brick(x, y - 1), Brick(x - 1, y))
         LINE ->
-            arrayListOf<Brick>(Brick(x, y - 3), Brick(x, y - 2), Brick(x, y - 1))
+            arrayListOf(Brick(x, y - 3), Brick(x, y - 2), Brick(x, y - 1))
         ZIGZAG1 ->
-            arrayListOf<Brick>(Brick(x, y - 1), Brick(x + 1, y - 1), Brick(x - 1, y))
+            arrayListOf(Brick(x, y - 1), Brick(x + 1, y - 1), Brick(x - 1, y))
         ZIGZAG2 ->
-            arrayListOf<Brick>(Brick(x - 2, y - 1), Brick(x - 1, y - 1), Brick(x - 1, y))
+            arrayListOf(Brick(x - 2, y - 1), Brick(x - 1, y - 1), Brick(x - 1, y))
         CURVY1 ->
-            arrayListOf<Brick>(Brick(x - 2, y - 1), Brick(x - 2, y), Brick(x - 1, y))
+            arrayListOf(Brick(x - 2, y - 1), Brick(x - 2, y), Brick(x - 1, y))
         CURVY2 ->
-            arrayListOf<Brick>(Brick(x, y - 1), Brick(x - 2, y), Brick(x - 1, y))
+            arrayListOf(Brick(x, y - 1), Brick(x - 2, y), Brick(x - 1, y))
         LADDER ->
-            arrayListOf<Brick>(Brick(x - 1, y - 1), Brick(x - 2, y), Brick(x - 1, y))
+            arrayListOf(Brick(x - 1, y - 1), Brick(x - 2, y), Brick(x - 1, y))
         else ->
             throw IllegalStateException("There are only 7 shapes of blocks in Tetris")
     }.apply { add(Brick(x, y)) }
 
-    fun copyStructure(list: Collection<Brick> = structure): Collection<Brick> {
+    private fun copyStructure(list: Collection<Brick> = structure): Collection<Brick> {
         val res = mutableListOf<Brick>()
         for ((index, brick) in list.withIndex()) {
             res[index] = Brick(brick.x, brick.y)
