@@ -25,4 +25,8 @@ The source code for tetris is located in `tetris` folder
 
 And the source code for the third game is located in `platformer` folder
 
+<h2>Contacts</h2>
 
+Telegram: `@gazinaft`
+
+Email: `gazinaft@gmail.com`
