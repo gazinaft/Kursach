@@ -25,6 +25,13 @@ The source code for tetris is located in `tetris` folder
 
 And the source code for the third game is located in `platformer` folder
 
+<h1>Current State</h1>
+The framework and the snake are fully completed
+
+Tetris is 2 days from implementation
+
+And the platformer game has only the foundation of <a href = "https://www.gamedev.net/articles/programming/general-and-gameplay-programming/understanding-component-entity-systems-r3013/">component-entity system </a>
+
 <h2>Contacts</h2>
 
 Telegram: `@gazinaft`
