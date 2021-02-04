@@ -62,12 +62,11 @@ class TetrisWorld {
         return gameOver
     }
 
-    fun clearLines() {
-        for (i in 0 until WORLD_WIDTH) {
-            for (j in 0 until WORLD_HEIGHT) {
-
-            }
+    fun clearLines(): List<Boolean> {
+        val lines = List<Boolean>(field.size) {
+                index -> field.map { array -> array[index] }.all { it }
         }
+        return lines
     }
 
     //spawns a new block on top of the world
